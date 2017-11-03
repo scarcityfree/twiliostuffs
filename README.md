@@ -16,6 +16,11 @@ export what_a_ruby_mess='/opt/twiliostuffs/what_a_mess.rb'
 chmod +x {watchlog.sh,what_a_mess.rb}
 ```
 
++ ensure twilio-ruby gem installed (tested in ruby 2.4):
+```bash
+gem install twilio-ruby
+```
+
 + create a cron to ensure the watchlog.sh is running via desired user's `crontab -e`, i.e.:
 ```bash
 * * * * * pgrep -u root watchlog.sh || /opt/twiliostuffs/watchlog.sh
