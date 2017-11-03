@@ -6,7 +6,7 @@ account_sid = ENV['twilio_account_sid']
 auth_token = ENV['twilio_auth_token']
 @client = Twilio::REST::Client.new account_sid, auth_token
 
-message = @client.accounts.messages.create(
+message = @client.accounts.message.create(
   :body => ENV['twilio_msg_body'],
   :to => ENV['alert_number'],
   :from => ENV['twilio_number'])
