@@ -11,6 +11,11 @@ export log_location='/minecraft/logs/latest.log'
 export what_a_ruby_mess='/opt/twiliostuffs/what_a_mess.rb'
 ```
 
++ ensure execute perms on watchlog.sh and what_a_mess.rb, i.e.:
+```bash
+chmod +x {watchlog.sh,what_a_mess.rb}
+```
+
 + create a cron to ensure the watchlog.sh is running via desired user's `crontab -e`, i.e.:
 ```bash
 * * * * * pgrep -u root watchlog.sh || /opt/twiliostuffs/watchlog.sh
