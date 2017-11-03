@@ -10,6 +10,7 @@ export alert_number='1231231235'
 export log_location='/minecraft/logs/latest.log'
 export what_a_ruby_mess='/opt/twiliostuffs/what_a_mess.rb'
 ```
+	- you may also need to include your ruby env for crontab, i.e.: `source /usr/local/rvm/environments/ruby-2.4.1` 
 
 + ensure execute perms on watchlog.sh and what_a_mess.rb, i.e.:
 ```bash
