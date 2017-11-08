@@ -12,8 +12,9 @@ tail -Fn0 "$log_location" |\
 				then
         		export who=$(echo "$line" | grep 'INFO]: UUID of player' |\
 					awk -F ']: ' '{print $2}' |\
-					sed 's/UUID of player //g ; s/([A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12})//g ; s/ lost connection: Disconnected//g')
-				export twilio_msg_body="$who connected"
+					sed 's/UUID of player //g' |\
+					awk -F ' is ' '{print $1}')
+				export twilio_msg_body="it's possible ${who} connected"
         		ruby "$what_a_ruby_mess"
 			fi
         	echo "$line" | grep 'lost connection: Disconnected'
@@ -23,7 +24,7 @@ tail -Fn0 "$log_location" |\
         		export who=$(echo "$line" | grep 'lost connection: Disconnected' |\
 					awk -F ']: ' '{print $2}' |\
 					sed 's/ lost connection: Disconnected//g')
-				export twilio_msg_body="$who disconnected"
+				export twilio_msg_body="it's possible ${who} disconnected"
         		ruby "$what_a_ruby_mess"
 			fi
         fi
